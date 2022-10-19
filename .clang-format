@@ -1,0 +1,6 @@
+# vi: ft=yaml
+
+AlignArrayOfStructures: Right
+AlignEscapedNewlines: Left
+AllowShortFunctionsOnASingleLine: None
+PackConstructorInitializers: Never

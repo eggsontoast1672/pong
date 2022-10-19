@@ -1,0 +1,5 @@
+# Build system files
+build/
+
+# IDE files
+.vscode/
