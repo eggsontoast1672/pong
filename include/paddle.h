@@ -1,9 +1,5 @@
 #pragma once
 
-#include <raylib.h>
-
-#include "constants.h"
-
 class Paddle {
 protected:
   Vector2 position;

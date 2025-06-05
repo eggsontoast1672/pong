@@ -5,6 +5,7 @@ set(raylib_USE_STATIC_LIBS ON)
 set(raylib_VERBOSE ON)
 
 find_package(raylib REQUIRED)
+find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 
 add_executable(pong src/main.cpp src/ball.cpp src/paddle.cpp)
 

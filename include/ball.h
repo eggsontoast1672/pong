@@ -1,7 +1,5 @@
 #pragma once
 
-#include <raylib.h>
-
 #include "paddle.h"
 
 enum LastScored {

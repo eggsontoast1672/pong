@@ -1,14 +1,17 @@
 // TODO: Add collision detection to the ball/paddles, part 2 (maybe)
 // TODO: Make ball constructor take a Vector2 instead of floats
 
-#include <raylib.h>
+#include <SFML/Graphics.hpp>
 
 #include "ball.h"
 #include "constants.h"
 #include "paddle.h"
 
 int main() {
-  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Basic Window");
+  sf::RenderWindow window{
+      sf::VideoMode{SCREEN_WIDTH, SCREEN_HEIGHT},
+      "Pong"
+  };
 
   int player_score = 0;
   int computer_score = 0;
@@ -20,9 +23,9 @@ int main() {
                           (float)SCREEN_HEIGHT - (float)PADDLE_HEIGHT - 20.0f},
                          KEY_I, KEY_K);
 
-  SetTargetFPS(60);
+  window.setFramerateLimit(60);
 
-  while (!WindowShouldClose()) {
+  while (window.isOpen()) {
     //////////////////
     // Handle input //
     //////////////////
@@ -56,9 +59,7 @@ int main() {
 
     int player_score_width = MeasureText(player_score_text, SCORE_FONT_SIZE);
 
-    BeginDrawing();
-
-    ClearBackground(BLACK);
+    window.clear();
 
     DrawText(player_score_text, SCREEN_WIDTH / 2 - player_score_width - 20, 20,
              SCORE_FONT_SIZE, WHITE);
@@ -70,14 +71,10 @@ int main() {
                i + MIDLINE_SUBSECT_LENGTH, WHITE);
     }
 
-    ball.draw();
-    computer.draw();
-    player.draw();
+    window.draw(ball);
+    window.draw(computer);
+    window.draw(player);
 
-    EndDrawing();
+    window.display();
   }
-
-  CloseWindow();
-
-  return 0;
 }

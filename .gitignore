@@ -2,4 +2,5 @@
 build/
 
 # IDE files
+.cache/
 .vscode/
