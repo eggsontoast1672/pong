@@ -1,5 +1,6 @@
 #pragma once
 
+#include "constants.h"
 #include "paddle.h"
 
 enum LastScored {
