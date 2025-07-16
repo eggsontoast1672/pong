@@ -19,8 +19,8 @@ Ball::Ball(const Vector2 &position)
     : position(position) {
 }
 
-void Ball::draw() const {
-  DrawCircleV(position, BALL_RADIUS, WHITE);
+void Ball::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+  target.draw(m_shape);
 }
 
 void Ball::update(const Paddle &player, const Paddle &computer) {

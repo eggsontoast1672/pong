@@ -1,23 +1,20 @@
 CC := clang
 CXX := clang++
-CFLAGS := -Ilib/raylib/src -Iinclude
+CFLAGS := -Iinclude
+LDFLAGS := -lsfml-system -lsfml-window -lsfml-graphics
 
-SOURCES := $(wildcard src/*.cpp)
+# SOURCES := $(wildcard src/*.cpp)
+SOURCES := src/main.cpp
 OBJECTS := $(patsubst src/%.cpp,build/%.o,$(SOURCES))
 
-all: raylib build/pong
-
-raylib:
-	git submodule init
-	git submodule update
-	make -C lib/raylib/src PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED
+all: build/pong
 
 build/%.o: src/%.cpp
 	@mkdir -p build
 	$(CXX) $(CFLAGS) -c -o $(@) $(<)
 
 build/pong: $(OBJECTS)
-	$(CXX) -o $(@) $(^)
+	$(CXX) -o $(@) $(^) $(LDFLAGS)
 
 clean:
 	rm -fr build
